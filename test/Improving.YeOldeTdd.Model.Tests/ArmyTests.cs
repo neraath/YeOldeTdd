@@ -38,5 +38,26 @@
             this.army.Attack(enemyArmy);
             Assert.IsTrue(enemyArmy.WasAttacked);
         }
+
+        [TestMethod]
+        public void InitialArmyHealthMustNotBeZero()
+        {
+            Assert.AreNotEqual(0, this.army.Health, "Army health is starting at 0.");
+        }
+        
+        [TestMethod]
+        public void InitialArmyPowerMustNotBeZero()
+        {
+            Assert.AreNotEqual(0, this.army.Power, "Initial power is 0.");
+        }
+
+        [TestMethod]
+        public void ArmyDoesDamageToTarget()
+        {
+            var enemyArmy = new Army();
+            int enemyHealth = enemyArmy.Health;
+            this.army.Attack(enemyArmy);
+            Assert.AreNotEqual(enemyHealth, enemyArmy.Health, "Health of enemy remains the same. Attack did not occur.");
+        }
     }
 }
