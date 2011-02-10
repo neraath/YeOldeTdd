@@ -7,3 +7,6 @@
 /test/Improving.YeOldeTdd.Console.Tests/bin
 /test/Improving.YeOldeTdd.Console.Tests/obj
 /_ReSharper.Improving.YeOldeTdd
+/src/Improving.YeOldeTdd.Model/bin
+/src/Improving.YeOldeTdd.Model/obj
+/TestResults

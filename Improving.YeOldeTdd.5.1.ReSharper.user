@@ -8,9 +8,28 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="15B56729-045C-4C91-A328-02AF75F5D91D/f:ProgramTests.cs" caret="299" fromTop="10" />
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="670" fromTop="21" />
+      <File id="15B56729-045C-4C91-A328-02AF75F5D91D/f:ProgramTests.cs" caret="741" fromTop="25" />
+      <File id="1C38A028-2770-4B51-AE66-BB3A5AFC1293/f:IBattlefieldEntity.cs" caret="205" fromTop="7" />
     </RecentFiles>
-    <RecentEdits />
+    <RecentEdits>
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="428" fromTop="12" />
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="345" fromTop="12" />
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="345" fromTop="21" />
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="1261" fromTop="31" />
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="932" fromTop="21" />
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="1882" fromTop="2" />
+      <File id="15B56729-045C-4C91-A328-02AF75F5D91D/f:ProgramTests.cs" caret="434" fromTop="13" />
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="853" fromTop="22" />
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="274" fromTop="9" />
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="261" fromTop="11" />
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="332" fromTop="12" />
+      <File id="15B56729-045C-4C91-A328-02AF75F5D91D/f:ProgramTests.cs" caret="741" fromTop="27" />
+      <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="103" fromTop="5" />
+      <File id="15B56729-045C-4C91-A328-02AF75F5D91D/f:ProgramTests.cs" caret="741" fromTop="30" />
+      <File id="15B56729-045C-4C91-A328-02AF75F5D91D/f:ProgramTests.cs" caret="741" fromTop="15" />
+      <File id="1C38A028-2770-4B51-AE66-BB3A5AFC1293/f:IBattlefieldEntity.cs" caret="205" fromTop="7" />
+    </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
     <NAntPath value="" />
@@ -23,4 +42,70 @@
     </NUnitInstallDir>
     <UseAddins>Never</UseAddins>
   </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="ProgramTests`0" priority="0" />
+      <Item value="Program`0" priority="4" />
+      <Item value="Console" priority="1" />
+      <Item value="System" priority="2" />
+      <Item value="Console`0" priority="12" />
+      <Item value="ExpectedException" priority="2" />
+      <Item value="typeof" priority="2" />
+      <Item value="public" priority="3" />
+      <Item value="static" priority="2" />
+      <Item value="void" priority="5" />
+      <Item value="string" priority="6" />
+      <Item value="private" priority="0" />
+      <Item value="if" priority="0" />
+      <Item value="menuOption" priority="4" />
+      <Item value="throw" priority="1" />
+      <Item value="new" priority="2" />
+      <Item value="ArgumentNullException" priority="0" />
+      <Item value="TestMethod" priority="0" />
+      <Item value="ArgumentException`0" priority="1" />
+      <Item value="switch" priority="0" />
+      <Item value="case" priority="0" />
+      <Item value="default" priority="0" />
+      <Item value="ArgumentException" priority="0" />
+      <Item value="PrintTitle`0" priority="0" />
+      <Item value="PrintMenu`0" priority="0" />
+      <Item value="while" priority="0" />
+      <Item value="SelectFromMenu`0" priority="0" />
+      <Item value="myStream" priority="4" />
+      <Item value="byte" priority="1" />
+      <Item value="value" priority="1" />
+      <Item value="int" priority="2" />
+      <Item value="Encoder`0" priority="0" />
+      <Item value="byteArray" priority="0" />
+      <Item value="bytes" priority="0" />
+      <Item value="IBattlefieldEntity`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Console">
+      <Item value="Out" priority="0" />
+      <Item value="WriteLine`0" priority="3" />
+      <Item value="In" priority="0" />
+      <Item value="OpenStandardInput`0" priority="1" />
+      <Item value="CancelKeyPress" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="IsNullOrEmpty`0" priority="0" />
+      <Item value="Format`0" priority="0" />
+      <Item value="Empty" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Improving.YeOldeTdd.Program">
+      <Item value="SelectFromMenu`0" priority="0" />
+      <Item value="Main`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IO.Stream">
+      <Item value="BeginWrite`0" priority="1" />
+      <Item value="Write`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Text.Encoding">
+      <Item value="ASCII" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Text.Encoding">
+      <Item value="GetBytes`0" priority="0" />
+      <Item value="GetByteCount`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
 </Configuration>

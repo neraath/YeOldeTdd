@@ -1,5 +1,9 @@
 ﻿namespace Improving.YeOldeTdd.Console.Tests
 {
+    using System;
+    using System.IO;
+    using System.Text;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
@@ -9,11 +13,17 @@
     public class ProgramTests
     {
         [TestMethod]
-        public void TestMethod1()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestMenuOnSpecifyNullParameterThrowsException()
         {
-            //
-            // TODO: Add test logic here
-            //
+            Program.SelectFromMenu(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestMenuOnSpecifyInvalidParameterThrowsException()
+        {
+            Program.SelectFromMenu("Z");
         }
     }
 }
