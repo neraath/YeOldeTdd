@@ -10,7 +10,9 @@
     <RecentFiles>
       <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="670" fromTop="21" />
       <File id="15B56729-045C-4C91-A328-02AF75F5D91D/f:ProgramTests.cs" caret="741" fromTop="25" />
-      <File id="1C38A028-2770-4B51-AE66-BB3A5AFC1293/f:IBattlefieldEntity.cs" caret="205" fromTop="7" />
+      <File id="1C38A028-2770-4B51-AE66-BB3A5AFC1293/d:Interfaces/f:IBattlefieldEntity.cs" caret="244" fromTop="11" />
+      <File id="1C38A028-2770-4B51-AE66-BB3A5AFC1293/d:Entities/f:Army.cs" caret="481" fromTop="17" />
+      <File id="79A9867B-8D27-4F1E-B62F-A10716169E00/f:ArmyTests.cs" caret="360" fromTop="9" />
     </RecentFiles>
     <RecentEdits>
       <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="428" fromTop="12" />
@@ -28,7 +30,17 @@
       <File id="DEF03C69-5862-4B85-BA77-2BAD577B5D8A/f:Program.cs" caret="103" fromTop="5" />
       <File id="15B56729-045C-4C91-A328-02AF75F5D91D/f:ProgramTests.cs" caret="741" fromTop="30" />
       <File id="15B56729-045C-4C91-A328-02AF75F5D91D/f:ProgramTests.cs" caret="741" fromTop="15" />
-      <File id="1C38A028-2770-4B51-AE66-BB3A5AFC1293/f:IBattlefieldEntity.cs" caret="205" fromTop="7" />
+      <File id="1C38A028-2770-4B51-AE66-BB3A5AFC1293/d:Interfaces/f:IBattlefieldEntity.cs" caret="132" fromTop="5" />
+      <File id="1C38A028-2770-4B51-AE66-BB3A5AFC1293/d:Entities/f:Army.cs" caret="119" fromTop="4" />
+      <File id="79A9867B-8D27-4F1E-B62F-A10716169E00/f:ArmyTests.cs" caret="0" fromTop="0" />
+      <File id="79A9867B-8D27-4F1E-B62F-A10716169E00/f:ArmyTests.cs" caret="535" fromTop="15" />
+      <File id="79A9867B-8D27-4F1E-B62F-A10716169E00/f:ArmyTests.cs" caret="427" fromTop="14" />
+      <File id="79A9867B-8D27-4F1E-B62F-A10716169E00/f:ArmyTests.cs" caret="650" fromTop="25" />
+      <File id="1C38A028-2770-4B51-AE66-BB3A5AFC1293/d:Interfaces/f:IBattlefieldEntity.cs" caret="244" fromTop="11" />
+      <File id="1C38A028-2770-4B51-AE66-BB3A5AFC1293/d:Entities/f:Army.cs" caret="297" fromTop="11" />
+      <File id="79A9867B-8D27-4F1E-B62F-A10716169E00/f:ArmyTests.cs" caret="1016" fromTop="31" />
+      <File id="1C38A028-2770-4B51-AE66-BB3A5AFC1293/d:Entities/f:Army.cs" caret="481" fromTop="17" />
+      <File id="79A9867B-8D27-4F1E-B62F-A10716169E00/f:ArmyTests.cs" caret="808" fromTop="24" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -49,18 +61,18 @@
       <Item value="Console" priority="1" />
       <Item value="System" priority="2" />
       <Item value="Console`0" priority="12" />
-      <Item value="ExpectedException" priority="2" />
-      <Item value="typeof" priority="2" />
-      <Item value="public" priority="3" />
+      <Item value="ExpectedException" priority="3" />
+      <Item value="typeof" priority="3" />
+      <Item value="public" priority="9" />
       <Item value="static" priority="2" />
-      <Item value="void" priority="5" />
+      <Item value="void" priority="9" />
       <Item value="string" priority="6" />
-      <Item value="private" priority="0" />
-      <Item value="if" priority="0" />
+      <Item value="private" priority="3" />
+      <Item value="if" priority="1" />
       <Item value="menuOption" priority="4" />
-      <Item value="throw" priority="1" />
-      <Item value="new" priority="2" />
-      <Item value="ArgumentNullException" priority="0" />
+      <Item value="throw" priority="2" />
+      <Item value="new" priority="5" />
+      <Item value="ArgumentNullException" priority="1" />
       <Item value="TestMethod" priority="0" />
       <Item value="ArgumentException`0" priority="1" />
       <Item value="switch" priority="0" />
@@ -74,11 +86,24 @@
       <Item value="myStream" priority="4" />
       <Item value="byte" priority="1" />
       <Item value="value" priority="1" />
-      <Item value="int" priority="2" />
+      <Item value="int" priority="3" />
       <Item value="Encoder`0" priority="0" />
       <Item value="byteArray" priority="0" />
       <Item value="bytes" priority="0" />
-      <Item value="IBattlefieldEntity`0" priority="0" />
+      <Item value="IBattlefieldEntity`0" priority="1" />
+      <Item value="ArmyTests`0" priority="0" />
+      <Item value="TestInitialize" priority="0" />
+      <Item value="this" priority="4" />
+      <Item value="Army" priority="1" />
+      <Item value="var" priority="1" />
+      <Item value="Army`0" priority="1" />
+      <Item value="null" priority="1" />
+      <Item value="enemyArmy" priority="4" />
+      <Item value="Assert`0" priority="2" />
+      <Item value="enemyHealth" priority="0" />
+      <Item value="enemy" priority="2" />
+      <Item value="bool" priority="1" />
+      <Item value="true" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Console">
       <Item value="Out" priority="0" />
@@ -106,6 +131,24 @@
     <ItemStatistics item="Qualified:System.Text.Encoding">
       <Item value="GetBytes`0" priority="0" />
       <Item value="GetByteCount`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Improving.YeOldeTdd.Model.Tests.ArmyTests">
+      <Item value="army" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Improving.YeOldeTdd.Model.Entities.Army">
+      <Item value="Attack`0" priority="1" />
+      <Item value="Health" priority="1" />
+      <Item value="Power" priority="0" />
+      <Item value="WasAttacked" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.VisualStudio.TestTools.UnitTesting.Assert">
+      <Item value="AreNotEqual`0" priority="0" />
+      <Item value="IsTrue`0" priority="0" />
+      <Item value="IsFalse`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Improving.YeOldeTdd.Model.IBattlefieldEntity">
+      <Item value="Health" priority="0" />
+      <Item value="WasAttacked" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>

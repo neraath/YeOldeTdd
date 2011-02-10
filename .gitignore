@@ -10,3 +10,5 @@
 /src/Improving.YeOldeTdd.Model/bin
 /src/Improving.YeOldeTdd.Model/obj
 /TestResults
+/test/Improving.YeOldeTdd.Model.Tests/bin
+/test/Improving.YeOldeTdd.Model.Tests/obj
