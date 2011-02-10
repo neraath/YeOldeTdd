@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Improving.YeOldeTdd.Console", "src\Improving.YeOldTdd.Console\Improving.YeOldeTdd.Console.csproj", "{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{5C4C5A8E-0AC7-4A90-A25F-9998C1C2CA65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EE94A447-88EB-4571-A784-EEE33A177A6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Improving.YeOldeTdd.Console.Tests", "test\Improving.YeOldeTdd.Console.Tests\Improving.YeOldeTdd.Console.Tests.csproj", "{15B56729-045C-4C91-A328-02AF75F5D91D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{821234BF-83B8-4B27-937C-DA2747E0453D}"
+	ProjectSection(SolutionItems) = preProject
+		Improving.YeOldeTdd.vsmdi = Improving.YeOldeTdd.vsmdi
+		config\Local.testsettings = config\Local.testsettings
+		config\TraceAndTestImpact.testsettings = config\TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Improving.YeOldeTdd.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}.Debug|x86.ActiveCfg = Debug|x86
+		{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}.Debug|x86.Build.0 = Debug|x86
+		{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}.Release|Any CPU.ActiveCfg = Release|x86
+		{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}.Release|Mixed Platforms.Build.0 = Release|x86
+		{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}.Release|x86.ActiveCfg = Release|x86
+		{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}.Release|x86.Build.0 = Release|x86
+		{15B56729-045C-4C91-A328-02AF75F5D91D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B56729-045C-4C91-A328-02AF75F5D91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B56729-045C-4C91-A328-02AF75F5D91D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{15B56729-045C-4C91-A328-02AF75F5D91D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{15B56729-045C-4C91-A328-02AF75F5D91D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{15B56729-045C-4C91-A328-02AF75F5D91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B56729-045C-4C91-A328-02AF75F5D91D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B56729-045C-4C91-A328-02AF75F5D91D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{15B56729-045C-4C91-A328-02AF75F5D91D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{15B56729-045C-4C91-A328-02AF75F5D91D}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DEF03C69-5862-4B85-BA77-2BAD577B5D8A} = {5C4C5A8E-0AC7-4A90-A25F-9998C1C2CA65}
+		{15B56729-045C-4C91-A328-02AF75F5D91D} = {EE94A447-88EB-4571-A784-EEE33A177A6D}
+		{821234BF-83B8-4B27-937C-DA2747E0453D} = {EE94A447-88EB-4571-A784-EEE33A177A6D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,9 @@
+
+/_ReSharper.Improving.YeOldTdd
+*.suo
+/Improving.YeOldTdd.5.1.ReSharper.user
+/src/Improving.YeOldTdd.Console/bin
+/src/Improving.YeOldTdd.Console/obj
+/test/Improving.YeOldeTdd.Console.Tests/bin
+/test/Improving.YeOldeTdd.Console.Tests/obj
+/_ReSharper.Improving.YeOldeTdd
