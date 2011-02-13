@@ -1,10 +1,7 @@
 ﻿namespace Improving.YeOldeTdd.Model.Tests
 {
-    using System;
-
     using Improving.YeOldeTdd.Logic.Factories;
     using Improving.YeOldeTdd.Model.Entities;
-    using Improving.YeOldeTdd.Model.Interfaces;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,37 +10,20 @@
     {
         private Catapult catapult;
 
-        private ICombatant combatant;
+        private string name = "Brown-Red 1";
 
         [TestInitialize]
         public void InitializeTests()
         {
-            var powerGenerator = new PowerGenerator();
-            this.catapult = new Catapult() { Health = 100, PowerGenerator = powerGenerator };
-            this.combatant = new Catapult() { Health = 100, PowerGenerator = powerGenerator };
+            this.catapult = new Catapult() { Name = this.name, Health = 100, PowerGenerator = new PowerGenerator() };
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void CatapultThrowsExceptionWithoutPowerGenerator()
+        public void TestCatapultToStringContainsUsefulInformation()
         {
-            this.catapult.PowerGenerator = null;
-            this.catapult.Attack(this.combatant);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void CatapultThrowsExceptionWithoutTarget()
-        {
-            this.catapult.Attack(null);
-        }
-
-        [TestMethod]
-        public void CatapultAttacksOtherCombatants()
-        {
-            int combatantStartHealth = this.combatant.Health;
-            this.catapult.Attack(this.combatant);
-            Assert.AreNotEqual(combatantStartHealth, this.combatant.Health);
+            Assert.AreNotEqual("Improving.YeOldeTdd.Model.Entities.Catapult", this.catapult.ToString());
+            Assert.IsTrue(this.catapult.ToString().Contains("Catapult"));
+            Assert.IsTrue(this.catapult.ToString().Contains(this.name));
         }
     }
 }

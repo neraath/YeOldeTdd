@@ -27,8 +27,9 @@
         [TestInitialize]
         public void TestSetup()
         {
-            this.army = new Army() { Health = 100 };
-            this.enemyArmy = new Army() { Health = 100 };
+            var powerGenerator = new PowerGenerator();
+            this.army = new Army() { Health = 100, PowerGenerator = powerGenerator };
+            this.enemyArmy = new Army() { Health = 100, PowerGenerator = powerGenerator };
         }
 
         [TestMethod]
@@ -112,6 +113,7 @@
         [ExpectedException(typeof(InvalidOperationException))]
         public void ArmyAttackThrowsExceptionIfNoPowerRandomizer()
         {
+            this.army.PowerGenerator = null;
             this.army.Attack(this.enemyArmy);
         }
 
@@ -121,9 +123,6 @@
         [TestMethod]
         public void ArmyPowerOfAttackIsRandom()
         {
-            var powerGenerator = new PowerGenerator();
-            this.army.PowerGenerator = powerGenerator;
-
             int[] lossOfHealth = new int[10];
 
             for (int i = 0; i < 10; i++)

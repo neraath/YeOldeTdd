@@ -1,5 +1,6 @@
 ﻿namespace Improving.YeOldeTdd.Logic.Tests
 {
+    using Improving.YeOldeTdd.Logic.Factories;
     using Improving.YeOldeTdd.Model;
     using Improving.YeOldeTdd.Model.Entities;
 
@@ -20,8 +21,9 @@
         [TestInitialize]
         public void InitializeTests()
         {
-            this.armyA = new Army();
-            this.armyB = new Army();
+            var powerGenerator = new PowerGenerator();
+            this.armyA = new Army() { Health = 100, PowerGenerator = powerGenerator };
+            this.armyB = new Army() { Health = 100, PowerGenerator = powerGenerator };
             this.warLogic = new WarLogic();
         }
 
