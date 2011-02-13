@@ -1,9 +1,15 @@
 ﻿namespace Improving.YeOldeTdd.Model.Tests
 {
+    using System;
+
     using Improving.YeOldeTdd.Logic.Factories;
     using Improving.YeOldeTdd.Model.Entities;
+    using Improving.YeOldeTdd.Model.Entities.Weapons;
+    using Improving.YeOldeTdd.Model.Interfaces;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Rhino.Mocks;
 
     [TestClass]
     public class CatapultTests
@@ -19,7 +25,7 @@
         }
 
         [TestMethod]
-        public void TestCatapultToStringContainsUsefulInformation()
+        public void CatapultToStringContainsUsefulInformation()
         {
             Assert.AreNotEqual("Improving.YeOldeTdd.Model.Entities.Catapult", this.catapult.ToString());
             Assert.IsTrue(this.catapult.ToString().Contains("Catapult"));

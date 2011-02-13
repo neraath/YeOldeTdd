@@ -13,13 +13,19 @@
     public class CombatantFactoryTests
     {
         private IPowerGenerator powerGenerator;
+
+        private IEquipmentFactory equipmentFactory;
+
         private CombatantFactory combatantFactory;
+
+        private IWeapon stubWeapon;
 
         [TestInitialize]
         public void InitializeTests()
         {
             this.powerGenerator = MockRepository.GenerateStub<IPowerGenerator>();
-            this.combatantFactory = new CombatantFactory(this.powerGenerator);
+            this.equipmentFactory = MockRepository.GenerateStub<IEquipmentFactory>();
+            this.combatantFactory = new CombatantFactory(this.powerGenerator, this.equipmentFactory);
         }
 
         [TestMethod]
@@ -53,6 +59,15 @@
         [TestMethod]
         public void CombatantsCreatedThruFactoryCanAttack()
         {
+            // Setup our stub.
+            this.stubWeapon = MockRepository.GenerateStub<IWeapon>();
+            this.equipmentFactory.Stub(x => x.EquipCombatant(null)).IgnoreArguments().Do(
+                new EquipCombatant(this.StubEquipCombatant));
+            this.equipmentFactory.Replay();
+            this.stubWeapon.Expect(x => x.CalculateDamage()).Return(10);
+            this.stubWeapon.Expect(x => x.CalculateDamage()).Return(10);
+
+            // Get our combatants.
             string knightName = "My Knight";
             var knight = combatantFactory.CreateCombatant<Knight>(knightName);
             string randomCombatantName = "My Random Combatant";
@@ -61,15 +76,24 @@
             int catapultHealth = randomCombatant.Health;
             int knightHealth = knight.Health;
 
-            // Setup our stub.
-            this.powerGenerator.Stub(x => x.GeneratePower()).Return(1);
-
             randomCombatant.Attack(knight);
             knight.Attack(randomCombatant);
 
+            this.equipmentFactory.VerifyAllExpectations();
+            this.stubWeapon.VerifyAllExpectations();
             Assert.AreNotEqual(catapultHealth, randomCombatant.Health);
             Assert.AreNotEqual(knightHealth, knight.Health);
-            this.powerGenerator.VerifyAllExpectations();
         }
+
+        #region CombatantsCreatedThruFactoryCanAttack
+
+        private delegate void EquipCombatant(ICombatant combatant);
+
+        private void StubEquipCombatant(ICombatant combatant)
+        {
+            combatant.EquipWeapon(this.stubWeapon);
+        }
+
+        #endregion
     }
 }

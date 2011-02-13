@@ -34,6 +34,11 @@
 
         public IPowerGenerator PowerGenerator { get; set; }
 
+        public void EquipWeapon(IWeapon weapon)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool HasAttacked { get; private set; }
 
         #endregion

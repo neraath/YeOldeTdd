@@ -5,6 +5,7 @@
 
     using Improving.YeOldeTdd.Logic.Factories;
     using Improving.YeOldeTdd.Model.Entities;
+    using Improving.YeOldeTdd.Model.Factories;
     using Improving.YeOldeTdd.Model.Interfaces;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,6 +22,8 @@
 
         private Army enemyArmy;
 
+        private IWeapon stubWeapon;
+
         /// <summary>
         /// Sets up our unit test suite prior to each unit test. 
         /// </summary>
@@ -28,8 +31,10 @@
         public void TestSetup()
         {
             var powerGenerator = new PowerGenerator();
-            this.army = new Army(powerGenerator) { Health = 100 };
-            this.enemyArmy = new Army(powerGenerator) { Health = 100 };
+            var weaponFactory = new WeaponFactory();
+            var combatantFactory = new CombatantFactory(powerGenerator, weaponFactory);
+            this.army = new Army(powerGenerator, combatantFactory) { Health = 100 };
+            this.enemyArmy = new Army(powerGenerator, combatantFactory) { Health = 100 };
         }
 
         [TestMethod]
@@ -151,36 +156,24 @@
         [TestMethod]
         public void ArmyPowerOfAttackControlled()
         {
-            int[] lossOfHealth = new int[3];
-
+            this.stubWeapon = MockRepository.GenerateStub<IWeapon>();
+            var weaponFactoryStub = MockRepository.GenerateStub<IEquipmentFactory>();
             var powerGeneratorStub = MockRepository.GenerateStub<IPowerGenerator>();
-            this.army = new Army(powerGeneratorStub);
-            powerGeneratorStub.Stub(x => x.GeneratePower()).Return(1);
-            powerGeneratorStub.Replay();
+            var combatantFactory = new CombatantFactory(powerGeneratorStub, weaponFactoryStub);
+            this.army = new Army(powerGeneratorStub, combatantFactory);
+
+            weaponFactoryStub.Expect(x => x.EquipCombatant(null)).IgnoreArguments().Do(
+                new EquipCombatant(this.StubEquipCombatant));
+            weaponFactoryStub.Replay();
+
+            int expectedDamage = 10;
+            this.stubWeapon.Expect(x => x.CalculateDamage()).Return(expectedDamage);
 
             int enemyHealth = this.enemyArmy.Health;
             this.army.Attack(this.enemyArmy);
-            lossOfHealth[0] = enemyHealth - this.enemyArmy.Health;
-
-            powerGeneratorStub.BackToRecord();
-            powerGeneratorStub.Stub(x => x.GeneratePower()).Return(10);
-            powerGeneratorStub.Replay();
-
-            enemyHealth = this.enemyArmy.Health;
-            this.army.Attack(this.enemyArmy);
-            lossOfHealth[1] = enemyHealth - this.enemyArmy.Health;
-
-            powerGeneratorStub.BackToRecord();
-            powerGeneratorStub.Stub(x => x.GeneratePower()).Return(5);
-            powerGeneratorStub.Replay();
-
-            enemyHealth = this.enemyArmy.Health;
-            this.army.Attack(this.enemyArmy);
-            lossOfHealth[2] = enemyHealth - this.enemyArmy.Health;
-
-            var numberOfDistinctValues = lossOfHealth.Distinct();
-            Assert.AreEqual(3, numberOfDistinctValues.Count(), "Power of attack is not random.");
-            powerGeneratorStub.VerifyAllExpectations();
+            weaponFactoryStub.VerifyAllExpectations();
+            this.stubWeapon.VerifyAllExpectations();
+            Assert.AreEqual(expectedDamage, enemyHealth - this.enemyArmy.Health);
         }
 
         [TestMethod]
@@ -207,11 +200,26 @@
             mockCombatant1.VerifyAllExpectations();
         }
 
+        #region ArmyPowerOfAttackControlled
+
+        private delegate void EquipCombatant(ICombatant combatant);
+
+        private void StubEquipCombatant(ICombatant combatant)
+        {
+            combatant.EquipWeapon(this.stubWeapon);
+        }
+
+        #endregion
+
+        #region ArmyAttacksWithCombatants Delegate
+
         private delegate void CombatantAttack(IBattlefieldEntity enemy);
 
         private void StubCombatantAttacksOpponent(IBattlefieldEntity enemy)
         {
             enemy.Health--;
         }
+
+        #endregion
     }
 }

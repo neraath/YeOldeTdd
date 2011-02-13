@@ -3,5 +3,7 @@
     public interface ICombatant : IBattlefieldEntity
     {
         IPowerGenerator PowerGenerator { get; set; }
+
+        void EquipWeapon(IWeapon weapon);
     }
 }

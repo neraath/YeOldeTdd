@@ -3,20 +3,25 @@
     using System;
 
     using Improving.YeOldeTdd.Model.Entities;
+    using Improving.YeOldeTdd.Model.Entities.Weapons;
     using Improving.YeOldeTdd.Model.Interfaces;
 
     public class CombatantFactory : ICombatantFactory
     {
         private IPowerGenerator powerGenerator;
 
-        public CombatantFactory(IPowerGenerator generator)
+        private IEquipmentFactory equipmentFactory;
+
+        public CombatantFactory(IPowerGenerator generator, IEquipmentFactory equipmentFactory)
         {
-            powerGenerator = generator;
+            this.powerGenerator = generator;
+            this.equipmentFactory = equipmentFactory;
         }
 
         public T CreateCombatant<T>(string name) where T : ICombatant, new()
         {
             T combatant = new T() { Health = 100, Name = name, PowerGenerator = powerGenerator };
+            equipmentFactory.EquipCombatant(combatant);
 
             return combatant;
         }
@@ -39,6 +44,8 @@
             {
                 combatant = new Combatant() { Health = 100, Name = name, PowerGenerator = powerGenerator };
             }
+
+            equipmentFactory.EquipCombatant(combatant);
 
             return combatant;
         }

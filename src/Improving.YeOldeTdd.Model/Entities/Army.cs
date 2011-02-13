@@ -18,7 +18,7 @@
         #region Constructors
 
         public Army(IPowerGenerator powerGenerator)
-            : this(powerGenerator, new CombatantFactory(powerGenerator))
+            : this(powerGenerator, null)
         {
         }
 

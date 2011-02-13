@@ -6,6 +6,12 @@
 
     public class Combatant : ICombatant
     {
+        #region Protected Members
+
+        protected IWeapon weapon;
+
+        #endregion
+
         #region Implementation of IBattlefieldEntity
 
         public Guid Id { get; private set; }
@@ -27,13 +33,10 @@
         public virtual void Attack(IBattlefieldEntity enemy)
         {
             if (enemy == null) throw new ArgumentNullException("enemy");
-            if (this.PowerGenerator == null) throw new InvalidOperationException("Cannot find power generator to generate power.");
-
-            this.Power = this.PowerGenerator.GeneratePower();
-
-            if (enemy.IsAlive)
+            
+            if (enemy.IsAlive && this.weapon != null)
             {
-                enemy.Health -= this.Power;
+                enemy.Health -= this.weapon.CalculateDamage();
                 enemy.WasAttacked = true;
             }
         }
@@ -41,6 +44,12 @@
         public string Name { get; set; }
 
         public IPowerGenerator PowerGenerator { get; set; }
+
+        public void EquipWeapon(IWeapon weapon)
+        {
+            if (weapon == null) throw new ArgumentNullException("weapon");
+            this.weapon = weapon;
+        }
 
         #endregion
     }

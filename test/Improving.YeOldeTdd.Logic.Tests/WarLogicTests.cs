@@ -3,6 +3,7 @@
     using Improving.YeOldeTdd.Logic.Factories;
     using Improving.YeOldeTdd.Model;
     using Improving.YeOldeTdd.Model.Entities;
+    using Improving.YeOldeTdd.Model.Factories;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -22,8 +23,10 @@
         public void InitializeTests()
         {
             var powerGenerator = new PowerGenerator();
-            this.armyA = new Army(powerGenerator) { Health = 100 };
-            this.armyB = new Army(powerGenerator) { Health = 100 };
+            var weaponFactory = new WeaponFactory();
+            var combatantFactory = new CombatantFactory(powerGenerator, weaponFactory);
+            this.armyA = new Army(powerGenerator, combatantFactory) { Health = 100 };
+            this.armyB = new Army(powerGenerator, combatantFactory) { Health = 100 };
             this.warLogic = new WarLogic();
         }
 
