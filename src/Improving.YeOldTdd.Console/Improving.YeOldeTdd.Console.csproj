@@ -46,6 +46,16 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Improving.YeOldeTdd.Logic\Improving.YeOldeTdd.Logic.csproj">
+      <Project>{CCD9CCF2-504C-4F98-8D86-582144BFA9D8}</Project>
+      <Name>Improving.YeOldeTdd.Logic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Improving.YeOldeTdd.Model\Improving.YeOldeTdd.Model.csproj">
+      <Project>{479A3E7B-C856-43B2-8EC1-74F3D93D0DC3}</Project>
+      <Name>Improving.YeOldeTdd.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
