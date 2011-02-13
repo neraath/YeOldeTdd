@@ -8,10 +8,19 @@
         {
             string menuOption = string.Empty;
 
-            PrintTitle();
-            PrintMenu();
-            menuOption = Console.ReadLine();
-            SelectFromMenu(menuOption);
+            try
+            {
+                PrintTitle();
+                PrintMenu();
+                menuOption = Console.ReadLine();
+                SelectFromMenu(menuOption);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
+            Console.ReadLine();
         }
 
         /// <summary>
