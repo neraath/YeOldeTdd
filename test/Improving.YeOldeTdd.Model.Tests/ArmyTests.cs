@@ -87,5 +87,20 @@
 
             Assert.IsTrue(this.enemyArmy.IsAlive);
         }
+
+        [TestMethod]
+        public void ArmyAsStringIsUseful()
+        {
+            this.army.Name = "Celtics";
+            
+            // This is brittle. Why?
+            Assert.AreSame("Celtics", this.army.ToString(), "The army's name is not present.");
+
+            // This is better. 
+            Assert.AreNotEqual("Improving.YeOldeTdd.Model.Entities.Army", this.army.ToString(), "The army has a bad string representation.");
+
+            // This really reveals what you are looking for.
+            Assert.IsTrue(this.army.ToString().Contains(this.army.Name));
+        }
     }
 }

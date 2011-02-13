@@ -33,8 +33,8 @@
             switch (menuOption)
             {
                 case "A":
-                    var armyA = new Army();
-                    var armyB = new Army();
+                    var armyA = new Army() { Name = "England" };
+                    var armyB = new Army() { Name = "Rome" };
                     var warLogic = new WarLogic();
                     warLogic.OnWarEnding += OnWarEnding;
                     warLogic.GoToWar(armyA, armyB);
@@ -73,7 +73,7 @@
 
         private static void OnWarEnding(object sender, WarEndingEventArgs args)
         {
-            Console.WriteLine("We have a victor! {0} is the winner of the war! Huzzah!", args.Victor);
+            Console.WriteLine("We have a victor! {0} is the winner of the war! Huzzah!", args.Victor.ToString());
         }
 
         #endregion

@@ -15,5 +15,7 @@
         bool WasAttacked { get; set; }
 
         void Attack(IBattlefieldEntity enemy);
+
+        string Name { get; set; }
     }
 }
