@@ -4,6 +4,7 @@
 
     using Improving.YeOldeTdd.Logic;
     using Improving.YeOldeTdd.Logic.Events;
+    using Improving.YeOldeTdd.Logic.Factories;
     using Improving.YeOldeTdd.Model;
     using Improving.YeOldeTdd.Model.Entities;
 
@@ -15,10 +16,17 @@
 
             while (menuOption != "Q")
             {
-                PrintTitle();
-                PrintMenu();
-                menuOption = Console.ReadLine();
-                SelectFromMenu(menuOption);
+                try
+                {
+                    PrintTitle();
+                    PrintMenu();
+                    menuOption = Console.ReadLine();
+                    SelectFromMenu(menuOption);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.ToString());
+                }
             }
         }
 
@@ -33,8 +41,9 @@
             switch (menuOption)
             {
                 case "A":
-                    var armyA = new Army() { Name = "England" };
-                    var armyB = new Army() { Name = "Rome" };
+                    var powerGenerator = new PowerGenerator();
+                    var armyA = new Army() { Name = "England", PowerGenerator = powerGenerator, Health = 100 };
+                    var armyB = new Army() { Name = "Rome", PowerGenerator = powerGenerator, Health = 100 };
                     var warLogic = new WarLogic();
                     warLogic.OnWarEnding += OnWarEnding;
                     warLogic.GoToWar(armyA, armyB);
