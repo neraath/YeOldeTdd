@@ -15,6 +15,14 @@
 
         public int Health { get; set; }
 
+        public bool IsAlive
+        {
+            get
+            {
+                return Health > 0   ;
+            }
+        }
+
         public void Attack(Army enemy)
         {
             if (enemy == null) throw new ArgumentNullException("enemy");

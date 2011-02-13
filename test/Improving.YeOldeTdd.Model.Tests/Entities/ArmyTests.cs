@@ -78,5 +78,21 @@
             // Assert
             Assert.AreEqual(powerOfAttack, enemyStartingHealth - enemyArmy.Health);
         }
+
+        [TestMethod]
+        public void RepeatedAttacksKillsOpponent()
+        {
+            // Arrange.
+            int powerOfAttack = 10;
+            army.Power = powerOfAttack;
+
+            // Act.
+            while (enemyArmy.Health > 0)
+            {
+                army.Attack(enemyArmy);
+            }
+
+            Assert.IsFalse(enemyArmy.IsAlive);
+        }
     }
 }
