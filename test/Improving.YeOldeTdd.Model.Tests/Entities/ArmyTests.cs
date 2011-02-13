@@ -9,13 +9,20 @@
     [TestClass]
     public class ArmyTests
     {
+        private Army army;
+
+        private Army enemyArmy;
+
+        [TestInitialize]
+        public void InitializeTests()
+        {
+            this.army = new Army();
+            this.enemyArmy = new Army();
+        }
+
         [TestMethod]
         public void TestArmyCanAttack()
         {
-            // Arrange.
-            Army army = new Army();
-            Army enemyArmy = new Army();
-
             // Act.
             army.Attack(enemyArmy);
 
@@ -27,7 +34,6 @@
         public void TestArmyThrowsExceptionWhenArmyIsNull()
         {
             // Arrange.
-            Army army = new Army();
             bool exceptionCaught = false;
 
             // Act.
@@ -48,8 +54,29 @@
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestArmyThrowsExceptionWhenArmyIsNullShort()
         {
-            Army army = new Army();
             army.Attack(null);
+        }
+
+        [TestMethod]
+        public void ArmyStartsWith100Health()
+        {
+            // Assert.
+            Assert.AreEqual(100, this.army.Health);
+        }
+
+        [TestMethod]
+        public void ArmyInflictsDamageToEnemy()
+        {
+            // Arrange.
+            int enemyStartingHealth = enemyArmy.Health;
+            int powerOfAttack = 10;
+            army.Power = powerOfAttack;
+
+            // Act.
+            army.Attack(enemyArmy);
+
+            // Assert
+            Assert.AreEqual(powerOfAttack, enemyStartingHealth - enemyArmy.Health);
         }
     }
 }
