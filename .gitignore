@@ -13,3 +13,6 @@
 /test/Improving.YeOldeTdd.Model.Tests/bin
 /test/Improving.YeOldeTdd.Model.Tests/obj
 *.user
+/test/Improving.YeOldeTdd.Logic.Tests/obj
+/test/Improving.YeOldeTdd.Logic.Tests/bin
+/src/Improving.YeOldeTdd.Logic/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
