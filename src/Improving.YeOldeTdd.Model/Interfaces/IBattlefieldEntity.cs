@@ -8,6 +8,8 @@
 
         int Health { get; set; }
 
+        bool IsAlive { get; }
+
         int Power { get; set; }
 
         bool WasAttacked { get; set; }

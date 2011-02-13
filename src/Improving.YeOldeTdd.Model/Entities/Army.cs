@@ -23,6 +23,14 @@
             }
         }
 
+        public bool IsAlive
+        {
+            get
+            {
+                return this.health > 0;
+            }
+        }
+
         public int Power
         {
             get

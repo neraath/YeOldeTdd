@@ -14,6 +14,8 @@
     {
         private Army army;
 
+        private Army enemyArmy;
+
         /// <summary>
         /// Sets up our unit test suite prior to each unit test. 
         /// </summary>
@@ -21,6 +23,7 @@
         public void TestSetup()
         {
             this.army = new Army();
+            this.enemyArmy = new Army();
         }
 
         [TestMethod]
@@ -34,9 +37,8 @@
         [TestMethod]
         public void TestArmyCanAttack()
         {
-            var enemyArmy = new Army();
-            this.army.Attack(enemyArmy);
-            Assert.IsTrue(enemyArmy.WasAttacked);
+            this.army.Attack(this.enemyArmy);
+            Assert.IsTrue(this.enemyArmy.WasAttacked);
         }
 
         [TestMethod]
@@ -54,10 +56,36 @@
         [TestMethod]
         public void ArmyDoesDamageToTarget()
         {
-            var enemyArmy = new Army();
-            int enemyHealth = enemyArmy.Health;
-            this.army.Attack(enemyArmy);
-            Assert.AreNotEqual(enemyHealth, enemyArmy.Health, "Health of enemy remains the same. Attack did not occur.");
+            int enemyHealth = this.enemyArmy.Health;
+            this.army.Attack(this.enemyArmy);
+            Assert.AreNotEqual(enemyHealth, this.enemyArmy.Health, "Health of enemy remains the same. Attack did not occur.");
+        }
+
+        [TestMethod]
+        public void ArmyCanKillOpponent()
+        {
+            int enemyHealth = this.enemyArmy.Health;
+            for (int i = 0; i < enemyHealth; i++)
+            {
+                this.army.Attack(this.enemyArmy);
+            }
+            
+            Assert.IsFalse(this.enemyArmy.IsAlive);
+        }
+
+        /// <summary>
+        /// This is a brittle test. Why?
+        /// </summary>
+        [TestMethod]
+        public void ArmyCanDoDamageWithoutKilling()
+        {
+            int enemyHealth = this.enemyArmy.Health;
+            for (int i = 0; i < enemyHealth / 2; i++)
+            {
+                this.army.Attack(this.enemyArmy);
+            }
+
+            Assert.IsTrue(this.enemyArmy.IsAlive);
         }
     }
 }
