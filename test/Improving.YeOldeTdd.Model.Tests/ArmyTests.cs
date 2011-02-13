@@ -1,6 +1,7 @@
 ﻿namespace Improving.YeOldeTdd.Model.Tests
 {
     using System;
+    using System.Linq;
 
     using Improving.YeOldeTdd.Model.Entities;
 
@@ -22,8 +23,8 @@
         [TestInitialize]
         public void TestSetup()
         {
-            this.army = new Army();
-            this.enemyArmy = new Army();
+            this.army = new Army() { Health = 100 };
+            this.enemyArmy = new Army() { Health = 100 };
         }
 
         [TestMethod]
@@ -101,6 +102,26 @@
 
             // This really reveals what you are looking for.
             Assert.IsTrue(this.army.ToString().Contains(this.army.Name));
+        }
+
+        /// <summary>
+        /// Warning: Possibly brittle.
+        /// </summary>
+        [TestMethod]
+        public void ArmyPowerOfAttackIsRandom()
+        {
+            int[] lossOfHealth = new int[20];
+
+            for (int i = 0; i < 20; i++)
+            {
+                int enemyHealth = this.enemyArmy.Health;
+                this.army.Attack(this.enemyArmy);
+                lossOfHealth[i] = enemyHealth - this.enemyArmy.Health;
+            }
+
+            // Assert that loss of health varies across the array.
+            var numberOfDistinctValues = lossOfHealth.Distinct();
+            Assert.AreNotEqual(1, numberOfDistinctValues.Count(), "Power of attack doesn't seem random.");
         }
     }
 }

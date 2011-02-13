@@ -50,8 +50,15 @@
         {
             if (enemy == null) throw new ArgumentNullException("enemy");
 
-            enemy.Health -= this.Power;
-            enemy.WasAttacked = true;
+            // Randomize the power. 
+            Random randGen = new Random();
+            this.Power = randGen.Next(20);
+
+            if (enemy.IsAlive)
+            {
+                enemy.Health -= this.Power;
+                enemy.WasAttacked = true;
+            }
         }
 
         public string Name { get; set; }
