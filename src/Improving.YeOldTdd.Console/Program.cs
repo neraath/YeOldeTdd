@@ -2,16 +2,24 @@
 {
     using System;
 
+    using Improving.YeOldeTdd.Logic;
+    using Improving.YeOldeTdd.Logic.Events;
+    using Improving.YeOldeTdd.Model;
+    using Improving.YeOldeTdd.Model.Entities;
+
     public class Program
     {
         public static void Main(string[] args)
         {
             string menuOption = string.Empty;
 
-            PrintTitle();
-            PrintMenu();
-            menuOption = Console.ReadLine();
-            SelectFromMenu(menuOption);
+            while (menuOption != "Q")
+            {
+                PrintTitle();
+                PrintMenu();
+                menuOption = Console.ReadLine();
+                SelectFromMenu(menuOption);
+            }
         }
 
         /// <summary>
@@ -24,6 +32,16 @@
 
             switch (menuOption)
             {
+                case "A":
+                    var armyA = new Army();
+                    var armyB = new Army();
+                    var warLogic = new WarLogic();
+                    warLogic.OnWarEnding += OnWarEnding;
+                    warLogic.GoToWar(armyA, armyB);
+                    break;
+                case "Q":
+                    Console.WriteLine("Quitting the game.");
+                    break;
                 default:
                     throw new ArgumentException(string.Format("Unknown parameter value: {0}", menuOption), "menuOption");
             }
@@ -51,6 +69,11 @@
             Console.WriteLine("=====  Q. Quit Game                  ======");
             Console.WriteLine("=====                                ======");
             Console.WriteLine("===========================================");
+        }
+
+        private static void OnWarEnding(object sender, WarEndingEventArgs args)
+        {
+            Console.WriteLine("We have a victor! {0} is the winner of the war! Huzzah!", args.Victor);
         }
 
         #endregion

@@ -2,20 +2,18 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DEF03C69-5862-4B85-BA77-2BAD577B5D8A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{76E6CC56-5B4D-48B6-8EA4-48B724650156}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Improving.YeOldeTdd</RootNamespace>
-    <AssemblyName>Improving.YeOldeTdd</AssemblyName>
+    <RootNamespace>Improving.YeOldeTdd.Logic</RootNamespace>
+    <AssemblyName>Improving.YeOldeTdd.Logic</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,8 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,14 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Events\WarEndingEventArgs.cs" />
+    <Compile Include="WarLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Improving.YeOldeTdd.Logic\Improving.YeOldeTdd.Logic.csproj">
-      <Project>{76E6CC56-5B4D-48B6-8EA4-48B724650156}</Project>
-      <Name>Improving.YeOldeTdd.Logic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Improving.YeOldeTdd.Model\Improving.YeOldeTdd.Model.csproj">
       <Project>{1C38A028-2770-4B51-AE66-BB3A5AFC1293}</Project>
       <Name>Improving.YeOldeTdd.Model</Name>

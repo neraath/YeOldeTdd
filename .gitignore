@@ -12,3 +12,7 @@
 /TestResults
 /test/Improving.YeOldeTdd.Model.Tests/bin
 /test/Improving.YeOldeTdd.Model.Tests/obj
+/src/Improving.YeOldeTdd.Logic/bin
+/src/Improving.YeOldeTdd.Logic/obj
+/test/Improving.YeOldeTdd.Logic.Tests/bin
+/test/Improving.YeOldeTdd.Logic.Tests/obj
