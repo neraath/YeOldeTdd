@@ -44,11 +44,14 @@
     <Compile Include="Entities\Catapult.cs" />
     <Compile Include="Entities\Combatant.cs" />
     <Compile Include="Entities\Knight.cs" />
+    <Compile Include="Entities\Weapons\CatapultStone.cs" />
+    <Compile Include="Entities\Weapons\Weapon.cs" />
     <Compile Include="Factories\CombatantFactory.cs" />
     <Compile Include="Interfaces\IBattlefieldEntity.cs" />
     <Compile Include="Interfaces\ICombatant.cs" />
     <Compile Include="Interfaces\ICombatantFactory.cs" />
     <Compile Include="Interfaces\IPowerGenerator.cs" />
+    <Compile Include="Interfaces\IWeapon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

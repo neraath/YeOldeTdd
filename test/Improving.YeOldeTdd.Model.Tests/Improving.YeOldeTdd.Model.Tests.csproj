@@ -48,6 +48,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatapultStoneTests.cs" />
     <Compile Include="CatapultTests.cs" />
     <Compile Include="CombatantTests.cs" />
     <Compile Include="FakeCombatant.cs" />
