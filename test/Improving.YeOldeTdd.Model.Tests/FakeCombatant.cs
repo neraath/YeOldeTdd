@@ -1,10 +1,10 @@
-﻿namespace Improving.YeOldeTdd.Model.Entities
+﻿namespace Improving.YeOldeTdd.Model.Tests
 {
     using System;
 
     using Improving.YeOldeTdd.Model.Interfaces;
 
-    public class Combatant : ICombatant
+    public class FakeCombatant : ICombatant
     {
         #region Implementation of IBattlefieldEntity
 
@@ -12,12 +12,12 @@
 
         public int Health { get; set; }
 
-        public bool IsAlive 
-        { 
+        public bool IsAlive
+        {
             get
             {
                 return this.Health > 0;
-            } 
+            }
         }
 
         public int Power { get; set; }
@@ -26,21 +26,15 @@
 
         public virtual void Attack(IBattlefieldEntity enemy)
         {
-            if (enemy == null) throw new ArgumentNullException("enemy");
-            if (this.PowerGenerator == null) throw new InvalidOperationException("Cannot find power generator to generate power.");
-
-            this.Power = this.PowerGenerator.GeneratePower();
-
-            if (enemy.IsAlive)
-            {
-                enemy.Health -= this.Power;
-                enemy.WasAttacked = true;
-            }
+            this.HasAttacked = true;
+            enemy.Health--;
         }
 
         public string Name { get; set; }
 
         public IPowerGenerator PowerGenerator { get; set; }
+
+        public bool HasAttacked { get; private set; }
 
         #endregion
     }

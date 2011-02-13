@@ -42,8 +42,8 @@
             {
                 case "A":
                     var powerGenerator = new PowerGenerator();
-                    var armyA = new Army() { Name = "England", PowerGenerator = powerGenerator, Health = 100 };
-                    var armyB = new Army() { Name = "Rome", PowerGenerator = powerGenerator, Health = 100 };
+                    var armyA = new Army(powerGenerator) { Name = "England", Health = 100 };
+                    var armyB = new Army(powerGenerator) { Name = "Rome", Health = 100 };
                     var warLogic = new WarLogic();
                     warLogic.OnWarEnding += OnWarEnding;
                     warLogic.GoToWar(armyA, armyB);

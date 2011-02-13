@@ -44,8 +44,10 @@
     <Compile Include="Entities\Catapult.cs" />
     <Compile Include="Entities\Combatant.cs" />
     <Compile Include="Entities\Knight.cs" />
+    <Compile Include="Factories\CombatantFactory.cs" />
     <Compile Include="Interfaces\IBattlefieldEntity.cs" />
     <Compile Include="Interfaces\ICombatant.cs" />
+    <Compile Include="Interfaces\ICombatantFactory.cs" />
     <Compile Include="Interfaces\IPowerGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

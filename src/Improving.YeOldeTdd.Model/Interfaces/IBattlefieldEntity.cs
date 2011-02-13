@@ -19,7 +19,5 @@
         void Attack(IBattlefieldEntity enemy);
 
         string Name { get; set; }
-
-        IPowerGenerator PowerGenerator { get; set; }
     }
 }

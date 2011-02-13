@@ -2,10 +2,36 @@
 {
     using System;
 
+    using Improving.YeOldeTdd.Model.Factories;
     using Improving.YeOldeTdd.Model.Interfaces;
 
     public class Army : IBattlefieldEntity
     {
+        #region Private Members
+
+        private ICombatantFactory combatantFactory;
+
+        private IPowerGenerator powerGenerator;
+
+        #endregion
+
+        #region Constructors
+
+        public Army(IPowerGenerator powerGenerator)
+            : this(powerGenerator, new CombatantFactory(powerGenerator))
+        {
+        }
+
+        public Army(IPowerGenerator powerGenerator, ICombatantFactory factory)
+        {
+            this.powerGenerator = powerGenerator;
+            this.combatantFactory = factory;
+        }
+
+        #endregion
+
+        #region IBattfieldEntity Properties
+
         private int power = 1;
 
         private int health = 10;
@@ -51,21 +77,16 @@
         public void Attack(IBattlefieldEntity enemy)
         {
             if (enemy == null) throw new ArgumentNullException("enemy");
-            if (this.PowerGenerator == null) throw new InvalidOperationException("No power generator available.");
+            if (this.combatantFactory == null) throw new InvalidOperationException("No combatant factory to create combatants.");
 
-            // Randomize the power. 
-            this.Power = this.PowerGenerator.GeneratePower();
-
-            if (enemy.IsAlive)
-            {
-                enemy.Health -= this.Power;
-                enemy.WasAttacked = true;
-            }
+            // Select a random combatant.
+            ICombatant randomCombatant = this.combatantFactory.CreateRandomCombatant("My Random Combatant");
+            randomCombatant.Attack(enemy);
         }
 
         public string Name { get; set; }
 
-        public IPowerGenerator PowerGenerator { get; set; }
+        #endregion
 
         public override string ToString()
         {

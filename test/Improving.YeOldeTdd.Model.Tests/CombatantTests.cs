@@ -44,6 +44,7 @@
             int combatantStartHealth = this.enemyCombatant.Health;
             this.combatant.Attack(this.enemyCombatant);
             Assert.AreNotEqual(combatantStartHealth, this.enemyCombatant.Health);
+            Assert.IsTrue(this.enemyCombatant.WasAttacked);
         }
     }
 }

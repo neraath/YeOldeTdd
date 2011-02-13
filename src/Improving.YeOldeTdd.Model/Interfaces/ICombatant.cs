@@ -2,5 +2,6 @@
 {
     public interface ICombatant : IBattlefieldEntity
     {
+        IPowerGenerator PowerGenerator { get; set; }
     }
 }

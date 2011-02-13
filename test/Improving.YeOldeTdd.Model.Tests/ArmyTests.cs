@@ -28,8 +28,8 @@
         public void TestSetup()
         {
             var powerGenerator = new PowerGenerator();
-            this.army = new Army() { Health = 100, PowerGenerator = powerGenerator };
-            this.enemyArmy = new Army() { Health = 100, PowerGenerator = powerGenerator };
+            this.army = new Army(powerGenerator) { Health = 100 };
+            this.enemyArmy = new Army(powerGenerator) { Health = 100 };
         }
 
         [TestMethod]
@@ -82,17 +82,17 @@
         /// <summary>
         /// This is a brittle test. Why?
         /// </summary>
-        [TestMethod]
-        public void ArmyCanDoDamageWithoutKilling()
-        {
-            int enemyHealth = this.enemyArmy.Health;
-            for (int i = 0; i < enemyHealth / 2; i++)
-            {
-                this.army.Attack(this.enemyArmy);
-            }
-
-            Assert.IsTrue(this.enemyArmy.IsAlive);
-        }
+//        [TestMethod]
+//        public void ArmyCanDoDamageWithoutKilling()
+//        {
+//            int enemyHealth = this.enemyArmy.Health;
+//            for (int i = 0; i < enemyHealth / 2; i++)
+//            {
+//                this.army.Attack(this.enemyArmy);
+//            }
+//
+//            Assert.IsTrue(this.enemyArmy.IsAlive);
+//        }
 
         [TestMethod]
         public void ArmyAsStringIsUseful()
@@ -111,31 +111,39 @@
 
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
-        public void ArmyAttackThrowsExceptionIfNoPowerRandomizer()
+        public void ArmyAttackThrowsExceptionIfNoCombatantFactory()
         {
-            this.army.PowerGenerator = null;
+            this.army = new Army(null, null);
             this.army.Attack(this.enemyArmy);
         }
+
+//        [TestMethod]
+//        [ExpectedException(typeof(InvalidOperationException))]
+//        public void ArmyAttackThrowsExceptionIfNoPowerRandomizer()
+//        {
+//            this.army.PowerGenerator = null;
+//            this.army.Attack(this.enemyArmy);
+//        }
 
         /// <summary>
         /// Warning: Quite brittle.
         /// </summary>
-        [TestMethod]
-        public void ArmyPowerOfAttackIsRandom()
-        {
-            int[] lossOfHealth = new int[10];
-
-            for (int i = 0; i < 10; i++)
-            {
-                int enemyHealth = this.enemyArmy.Health;
-                this.army.Attack(this.enemyArmy);
-                lossOfHealth[i] = enemyHealth - this.enemyArmy.Health;
-            }
-
+//        [TestMethod]
+//        public void ArmyPowerOfAttackIsRandom()
+//        {
+//            int[] lossOfHealth = new int[10];
+//
+//            for (int i = 0; i < 10; i++)
+//            {
+//                int enemyHealth = this.enemyArmy.Health;
+//                this.army.Attack(this.enemyArmy);
+//                lossOfHealth[i] = enemyHealth - this.enemyArmy.Health;
+//            }
+//
             // Assert that loss of health varies across the array.
-            var numberOfDistinctValues = lossOfHealth.Distinct();
-            Assert.AreNotEqual(1, numberOfDistinctValues.Count(), "Power of attack doesn't seem random.");
-        }
+//            var numberOfDistinctValues = lossOfHealth.Distinct();
+//            Assert.AreNotEqual(1, numberOfDistinctValues.Count(), "Power of attack doesn't seem random.");
+//        }
 
         /// <summary>
         /// Much more reliable than the one above. 
@@ -146,7 +154,7 @@
             int[] lossOfHealth = new int[3];
 
             var powerGeneratorStub = MockRepository.GenerateStub<IPowerGenerator>();
-            this.army.PowerGenerator = powerGeneratorStub;
+            this.army = new Army(powerGeneratorStub);
             powerGeneratorStub.Stub(x => x.GeneratePower()).Return(1);
             powerGeneratorStub.Replay();
 
@@ -173,6 +181,37 @@
             var numberOfDistinctValues = lossOfHealth.Distinct();
             Assert.AreEqual(3, numberOfDistinctValues.Count(), "Power of attack is not random.");
             powerGeneratorStub.VerifyAllExpectations();
+        }
+
+        [TestMethod]
+        public void ArmyAttacksWithCombatants()
+        {
+            IPowerGenerator generatorStub = MockRepository.GenerateStub<IPowerGenerator>();
+            ICombatantFactory factoryStub = MockRepository.GenerateStub<ICombatantFactory>();
+            Combatant mockCombatant1 = MockRepository.GeneratePartialMock<Combatant>();
+            Army enemyArmy = new Army(generatorStub) { Health = 100 };
+
+            // Setup our mock and stub expectations.
+            factoryStub.Stub(x => x.CreateRandomCombatant("Test Combatant")).IgnoreArguments().Return(mockCombatant1);
+            //factoryStub.Stub(x => x.CreateRandomCombatant("Fake Combatant")).IgnoreArguments().Return(mockCombatant2);
+
+            mockCombatant1.Expect(x => x.Attack(enemyArmy)).Do(
+                new CombatantAttack(this.StubCombatantAttacksOpponent));
+            mockCombatant1.Replay();
+
+            // Initialize our army and attack.
+            Army myArmy = new Army(generatorStub, factoryStub);
+            myArmy.Attack(enemyArmy);
+
+            factoryStub.VerifyAllExpectations();
+            mockCombatant1.VerifyAllExpectations();
+        }
+
+        private delegate void CombatantAttack(IBattlefieldEntity enemy);
+
+        private void StubCombatantAttacksOpponent(IBattlefieldEntity enemy)
+        {
+            enemy.Health--;
         }
     }
 }

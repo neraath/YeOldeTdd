@@ -22,8 +22,8 @@
         public void InitializeTests()
         {
             var powerGenerator = new PowerGenerator();
-            this.armyA = new Army() { Health = 100, PowerGenerator = powerGenerator };
-            this.armyB = new Army() { Health = 100, PowerGenerator = powerGenerator };
+            this.armyA = new Army(powerGenerator) { Health = 100 };
+            this.armyB = new Army(powerGenerator) { Health = 100 };
             this.warLogic = new WarLogic();
         }
 
