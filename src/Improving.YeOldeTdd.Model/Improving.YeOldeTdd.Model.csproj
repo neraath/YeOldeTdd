@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Entities\Army.cs" />
     <Compile Include="Interfaces\IBattlefieldEntity.cs" />
+    <Compile Include="Interfaces\IPowerGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,6 +2,8 @@
 {
     using System;
 
+    using Improving.YeOldeTdd.Model.Interfaces;
+
     public class Army : IBattlefieldEntity
     {
         private int power = 1;
@@ -49,10 +51,10 @@
         public void Attack(IBattlefieldEntity enemy)
         {
             if (enemy == null) throw new ArgumentNullException("enemy");
+            if (this.PowerGenerator == null) throw new InvalidOperationException("No power generator available.");
 
             // Randomize the power. 
-            Random randGen = new Random();
-            this.Power = randGen.Next(20);
+            this.Power = this.PowerGenerator.GeneratePower();
 
             if (enemy.IsAlive)
             {
@@ -62,6 +64,8 @@
         }
 
         public string Name { get; set; }
+
+        public IPowerGenerator PowerGenerator { get; set; }
 
         public override string ToString()
         {

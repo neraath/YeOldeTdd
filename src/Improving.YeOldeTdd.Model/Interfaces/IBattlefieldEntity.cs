@@ -2,6 +2,8 @@
 {
     using System;
 
+    using Improving.YeOldeTdd.Model.Interfaces;
+
     public interface IBattlefieldEntity
     {
         Guid Id { get; }
@@ -17,5 +19,7 @@
         void Attack(IBattlefieldEntity enemy);
 
         string Name { get; set; }
+
+        IPowerGenerator PowerGenerator { get; set; }
     }
 }

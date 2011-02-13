@@ -3,9 +3,13 @@
     using System;
     using System.Linq;
 
+    using Improving.YeOldeTdd.Logic.Factories;
     using Improving.YeOldeTdd.Model.Entities;
+    using Improving.YeOldeTdd.Model.Interfaces;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Rhino.Mocks;
 
     /// <summary>
     /// Summary description for UnitTest1
@@ -104,15 +108,25 @@
             Assert.IsTrue(this.army.ToString().Contains(this.army.Name));
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void ArmyAttackThrowsExceptionIfNoPowerRandomizer()
+        {
+            this.army.Attack(this.enemyArmy);
+        }
+
         /// <summary>
-        /// Warning: Possibly brittle.
+        /// Warning: Quite brittle.
         /// </summary>
         [TestMethod]
         public void ArmyPowerOfAttackIsRandom()
         {
-            int[] lossOfHealth = new int[20];
+            var powerGenerator = new PowerGenerator();
+            this.army.PowerGenerator = powerGenerator;
 
-            for (int i = 0; i < 20; i++)
+            int[] lossOfHealth = new int[10];
+
+            for (int i = 0; i < 10; i++)
             {
                 int enemyHealth = this.enemyArmy.Health;
                 this.army.Attack(this.enemyArmy);
@@ -122,6 +136,44 @@
             // Assert that loss of health varies across the array.
             var numberOfDistinctValues = lossOfHealth.Distinct();
             Assert.AreNotEqual(1, numberOfDistinctValues.Count(), "Power of attack doesn't seem random.");
+        }
+
+        /// <summary>
+        /// Much more reliable than the one above. 
+        /// </summary>
+        [TestMethod]
+        public void ArmyPowerOfAttackControlled()
+        {
+            int[] lossOfHealth = new int[3];
+
+            var powerGeneratorStub = MockRepository.GenerateStub<IPowerGenerator>();
+            this.army.PowerGenerator = powerGeneratorStub;
+            powerGeneratorStub.Stub(x => x.GeneratePower()).Return(1);
+            powerGeneratorStub.Replay();
+
+            int enemyHealth = this.enemyArmy.Health;
+            this.army.Attack(this.enemyArmy);
+            lossOfHealth[0] = enemyHealth - this.enemyArmy.Health;
+
+            powerGeneratorStub.BackToRecord();
+            powerGeneratorStub.Stub(x => x.GeneratePower()).Return(10);
+            powerGeneratorStub.Replay();
+
+            enemyHealth = this.enemyArmy.Health;
+            this.army.Attack(this.enemyArmy);
+            lossOfHealth[1] = enemyHealth - this.enemyArmy.Health;
+
+            powerGeneratorStub.BackToRecord();
+            powerGeneratorStub.Stub(x => x.GeneratePower()).Return(5);
+            powerGeneratorStub.Replay();
+
+            enemyHealth = this.enemyArmy.Health;
+            this.army.Attack(this.enemyArmy);
+            lossOfHealth[2] = enemyHealth - this.enemyArmy.Health;
+
+            var numberOfDistinctValues = lossOfHealth.Distinct();
+            Assert.AreEqual(3, numberOfDistinctValues.Count(), "Power of attack is not random.");
+            powerGeneratorStub.VerifyAllExpectations();
         }
     }
 }

@@ -34,6 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\packages\RhinoMocks.3.6\lib\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -49,10 +52,17 @@
     <Compile Include="ArmyTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Improving.YeOldeTdd.Logic\Improving.YeOldeTdd.Logic.csproj">
+      <Project>{76E6CC56-5B4D-48B6-8EA4-48B724650156}</Project>
+      <Name>Improving.YeOldeTdd.Logic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Improving.YeOldeTdd.Model\Improving.YeOldeTdd.Model.csproj">
       <Project>{1C38A028-2770-4B51-AE66-BB3A5AFC1293}</Project>
       <Name>Improving.YeOldeTdd.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
