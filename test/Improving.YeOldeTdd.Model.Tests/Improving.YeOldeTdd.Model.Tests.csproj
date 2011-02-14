@@ -48,6 +48,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\ArmyAttacking.cs" />
     <Compile Include="Entities\ArmyTests.cs" />
     <Compile Include="Entities\CatapultTests.cs" />
     <Compile Include="Entities\CombatantTests.cs" />

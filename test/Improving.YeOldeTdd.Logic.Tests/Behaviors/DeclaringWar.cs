@@ -1,4 +1,4 @@
-﻿namespace Improving.YeOldeTdd.Logic.Tests
+﻿namespace Improving.YeOldeTdd.Logic.Tests.Behaviors
 {
     using Improving.YeOldeTdd.Logic.Factories;
     using Improving.YeOldeTdd.Model.Entities;
@@ -7,44 +7,39 @@
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    /// <summary>
-    /// Summary description for UnitTest1
-    /// </summary>
     [TestClass]
-    public class WarLogicTests
+    public class DeclaringWar
     {
         #region Private Members
 
-        private Army armyA;
-
-        private Army armyB;
-
-        private WarLogic warLogic;
+        private WarLogic logic;
 
         private IPowerGenerator powerGenerator;
 
         private ICombatantFactory combatantFactory;
+
+        private Army armyA;
+
+        private Army armyB;
 
         #endregion
 
         [TestInitialize]
         public void InitializeTests()
         {
+            this.logic = new WarLogic();
             this.powerGenerator = new PowerGenerator();
             this.combatantFactory = new CombatantFactory(this.powerGenerator);
             this.armyA = new Army(this.powerGenerator, this.combatantFactory);
             this.armyB = new Army(this.powerGenerator, this.combatantFactory);
-            this.warLogic = new WarLogic();
         }
 
         [TestMethod]
-        public void TestVictorDeclaredAfterGoingToWar()
+        public void ShouldResultInAVictor()
         {
             Army victor = null;
-            this.warLogic.OnWarEnding += (sender, warEndingArgs) => { victor = warEndingArgs.Victor; };
-            this.warLogic.GoToWar(this.armyA, this.armyB);
-            
-            Assert.IsNotNull(victor, "Victor was not declared.");
+            this.logic.OnWarEnding += (sender, args) => { victor = args.Victor; Assert.IsNotNull(victor); };
+            this.logic.GoToWar(this.armyA, this.armyB);
         }
     }
 }

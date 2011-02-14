@@ -29,15 +29,6 @@
 
         public bool WasAttacked { get; set; }
 
-        public int Power 
-        { 
-            get
-            {
-                if (this.powerGenerator == null) throw new InvalidOperationException();
-                return this.powerGenerator.GeneratePower();
-            }
-        }
-
         public int Health { get; set; }
 
         public bool IsAlive

@@ -2,8 +2,6 @@
 {
     public interface ICombatantFactory
     {
-        T CreateCombatant<T>() where T : ICombatant, new();
-
         ICombatant CreateRandomCombatant();
     }
 }

@@ -2,5 +2,6 @@
 {
     public interface ICombatant : IBattlefieldEntity
     {
+        int Power { get; }
     }
 }

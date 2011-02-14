@@ -15,14 +15,6 @@
             powerGenerator = generator;
         }
 
-        public T CreateCombatant<T>() where T : ICombatant, new()
-        {
-            T combatant = new T();
-            FieldInfo field = typeof(T).GetField("powerGenerator", BindingFlags.Instance | BindingFlags.NonPublic);
-            field.SetValue(combatant, powerGenerator);
-            return combatant;
-        }
-
         public ICombatant CreateRandomCombatant()
         {
             Random randomizer = new Random();

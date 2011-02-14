@@ -4,11 +4,6 @@
 
     public class Knight : Combatant
     {
-        public Knight()
-            : base()
-        {
-        }
-
         public Knight(IPowerGenerator powerGenerator)
             : base(powerGenerator)
         {

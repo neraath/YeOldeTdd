@@ -8,8 +8,6 @@
 
         bool IsAlive { get; }
 
-        int Power { get; }
-
         bool WasAttacked { get; set; }
 
         void Attack(IBattlefieldEntity enemy);
