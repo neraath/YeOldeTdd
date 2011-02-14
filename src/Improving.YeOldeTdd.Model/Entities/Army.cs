@@ -8,15 +8,23 @@
     {
         private IPowerGenerator powerGenerator;
 
+        private ICombatantFactory combatantFactory;
+
         public Army()
             : this(null)
         {
         }
 
         public Army(IPowerGenerator powerGenerator)
+            : this(powerGenerator, null)
         {
-            this.powerGenerator = powerGenerator;
+        }
+
+        public Army(IPowerGenerator powerGenerator, ICombatantFactory factory)
+        {
             Health = 100;
+            this.powerGenerator = powerGenerator;
+            this.combatantFactory = factory;
         }
 
         public bool WasAttacked { get; set; }
@@ -43,8 +51,11 @@
         public void Attack(IBattlefieldEntity enemy)
         {
             if (enemy == null) throw new ArgumentNullException("enemy");
-            enemy.WasAttacked = true;
-            enemy.Health -= this.Power;
+            if (this.combatantFactory == null) throw new InvalidOperationException("No combatant factory to create combatants.");
+
+            // Select a random combatant.
+            ICombatant randomCombatant = this.combatantFactory.CreateRandomCombatant();
+            randomCombatant.Attack(enemy);
         }
     }
 }

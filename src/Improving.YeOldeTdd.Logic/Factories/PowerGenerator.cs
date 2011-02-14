@@ -9,7 +9,7 @@
         public int GeneratePower()
         {
             Random randomizer = new Random();
-            return randomizer.Next(20);
+            return randomizer.Next(1, 20);
         }
     }
 }

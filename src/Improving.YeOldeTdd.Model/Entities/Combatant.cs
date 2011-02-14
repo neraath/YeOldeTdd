@@ -10,12 +10,12 @@
 
         #region Implementation of ICombatant
 
-        public Catapult()
+        public Combatant()
             : this(null)
         {
         }
 
-        public Catapult(IPowerGenerator powerGenerator)
+        public Combatant(IPowerGenerator powerGenerator)
         {
             this.Health = 100;
             this.powerGenerator = powerGenerator;
@@ -42,7 +42,7 @@
 
         public bool WasAttacked { get; set; }
 
-        public void Attack(IBattlefieldEntity enemy)
+        public virtual void Attack(IBattlefieldEntity enemy)
         {
             if (enemy == null) throw new ArgumentNullException("enemy");
 

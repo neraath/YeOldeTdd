@@ -42,11 +42,16 @@
   <ItemGroup>
     <Compile Include="Entities\Army.cs" />
     <Compile Include="Entities\Catapult.cs" />
+    <Compile Include="Entities\Combatant.cs" />
+    <Compile Include="Entities\Knight.cs" />
+    <Compile Include="Factories\CombatantFactory.cs" />
     <Compile Include="Interfaces\IBattlefieldEntity.cs" />
     <Compile Include="Interfaces\ICombatant.cs" />
+    <Compile Include="Interfaces\ICombatantFactory.cs" />
     <Compile Include="Interfaces\IPowerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
