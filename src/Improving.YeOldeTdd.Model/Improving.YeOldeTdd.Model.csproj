@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Army.cs" />
+    <Compile Include="Entities\Catapult.cs" />
+    <Compile Include="Interfaces\IBattlefieldEntity.cs" />
+    <Compile Include="Interfaces\ICombatant.cs" />
     <Compile Include="Interfaces\IPowerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

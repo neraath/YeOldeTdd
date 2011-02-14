@@ -4,7 +4,7 @@
 
     using Improving.YeOldeTdd.Model.Interfaces;
 
-    public class Army
+    public class Army : IBattlefieldEntity
     {
         private IPowerGenerator powerGenerator;
 
@@ -40,7 +40,7 @@
             }
         }
 
-        public void Attack(Army enemy)
+        public void Attack(IBattlefieldEntity enemy)
         {
             if (enemy == null) throw new ArgumentNullException("enemy");
             enemy.WasAttacked = true;
