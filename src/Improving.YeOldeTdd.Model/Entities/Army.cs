@@ -2,16 +2,33 @@
 {
     using System;
 
+    using Improving.YeOldeTdd.Model.Interfaces;
+
     public class Army
     {
+        private IPowerGenerator powerGenerator;
+
         public Army()
+            : this(null)
         {
+        }
+
+        public Army(IPowerGenerator powerGenerator)
+        {
+            this.powerGenerator = powerGenerator;
             Health = 100;
         }
 
         public bool WasAttacked { get; set; }
 
-        public int Power { get; set; }
+        public int Power 
+        { 
+            get
+            {
+                if (this.powerGenerator == null) throw new InvalidOperationException();
+                return this.powerGenerator.GeneratePower();
+            }
+        }
 
         public int Health { get; set; }
 
@@ -19,7 +36,7 @@
         {
             get
             {
-                return Health > 0   ;
+                return Health > 0;
             }
         }
 

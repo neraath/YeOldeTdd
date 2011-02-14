@@ -43,7 +43,8 @@
                 case "A":
                     WarLogic logic = new WarLogic();
                     logic.OnWarEnding += PrintVictor;
-                    logic.GoToWar(new Army() { Power = 5 }, new Army() { Power = 5 });
+                    //logic.GoToWar(new Army() { Power = 5 }, new Army() { Power = 5 });
+                    logic.GoToWar(new Army(), new Army());
                     break;
                 case "Q":
                     break;

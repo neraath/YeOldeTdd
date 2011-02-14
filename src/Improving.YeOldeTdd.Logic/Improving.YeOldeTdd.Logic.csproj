@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Events\WarEndingEventArgs.cs" />
+    <Compile Include="Factories\PowerGenerator.cs" />
     <Compile Include="WarLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
