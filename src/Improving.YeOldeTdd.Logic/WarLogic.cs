@@ -9,8 +9,13 @@
     {
         public event WarEnding OnWarEnding = delegate { };
 
-        public void GoToWar(IBattlefieldEntity armyA, IBattlefieldEntity armyB)
+        private void InvokeOnWarEnding(IBattlefieldEntity victor, IBattlefieldEntity loser)
         {
+            WarEnding handler = this.OnWarEnding;
+            handler(this, new WarEndingEventArgs() { Victor = victor, Loser = loser });
+        }
+
+        public void GoToWar(IBattlefieldEntity armyA, IBattlefieldEntity armyB) {
             while (armyA.IsAlive && armyB.IsAlive)
             {
                 armyA.Attack(armyB);
@@ -22,10 +27,5 @@
             this.InvokeOnWarEnding(victor, loser);
         }
 
-        private void InvokeOnWarEnding(IBattlefieldEntity victor, IBattlefieldEntity loser)
-        {
-            WarEnding handler = this.OnWarEnding;
-            handler(this, new WarEndingEventArgs() { Victor = victor, Loser = loser });
-        }
     }
 }

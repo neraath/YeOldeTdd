@@ -21,6 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>ExtendedDesignGuidelineRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -49,6 +51,7 @@
     <Compile Include="Entities\Weapons\Weapon.cs" />
     <Compile Include="Factories\CombatantFactory.cs" />
     <Compile Include="Factories\WeaponFactory.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interfaces\IBattlefieldEntity.cs" />
     <Compile Include="Interfaces\ICombatant.cs" />
     <Compile Include="Interfaces\ICombatantFactory.cs" />

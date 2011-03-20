@@ -4,8 +4,7 @@
 
     using Improving.YeOldeTdd.Model.Interfaces;
 
-    public class PowerGenerator : IPowerGenerator
-    {
+    public class PowerGenerator : IPowerGenerator {
         public int GeneratePower()
         {
             Random randomizer = new Random();

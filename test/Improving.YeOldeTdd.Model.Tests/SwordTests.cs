@@ -13,7 +13,7 @@
         {
             // We know the min and max attack values.
             int minDamage = 2;
-            int maxDamage = 6;
+            int maxDamage = 10;
 
             var sword = new Sword();
             Assert.IsTrue(minDamage <= sword.CalculateDamage());
